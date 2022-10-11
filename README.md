@@ -80,6 +80,7 @@ each zip folder contains about 960 clips, clips length = 15s
   * CNN block
   * resnet 
   * it is OK to run all of them
+  * model input: ***Batch size, Channel(1 for gray scale), Depth(N frame), H, W***
 * Build model
   * only choose one of the model to build
     * CNN Block
