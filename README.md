@@ -50,14 +50,57 @@ each zip folder contains about 960 clips, clips length = 15s
   * use functions in helper to build traian, valid, test dataset
   * list of tuples save as .dat
   * ***never run it if you are using .dat***
-* Dataloader
-  * read .dat
-  * data structure
+* Dataloader*
+  * pytorch Dataset for latter use
+  * return 
+  ```ruby
+      sample = {'images': images,             # size: N frames, H, W
+                'label': float(class_label),  # 0. or 1.
+                'audio': audio,               # None now
+                'uid': uid,                   # video name
+                'value': org_value}           # origin annotation value 
   ```
+  * augmentation (horizon flip)
+* Load data
+  * read .dat 
+  * data structure in .dat
+  ``` ruby
   list[
-    np arrays: preprocessed images, ground truth big 5
+    # np arrays: preprocessed images, ground truth big 5
     sample1 tuple(array[(6*128*128)], array[(5)]),
     sample2 tuple(array[(6*128*128)], array[(5)]),
     sample3 ...
+    ...
   ]  
   ```
+  * in classification.ipynb, find Q40 & Q60 to filter 20% data in the center
+  * no need to filter them in regression
+* Model*
+  * model classes and helper function
+  * CNN block
+  * resnet 
+  * it is OK to run all of them
+* Build model
+  * only choose one of the model to build
+    * CNN Block
+    * Resnet
+    * Pretrain
+  * Then run Optimizer & Checkpoint 
+* Train Helper*
+  * loss function 
+  * train & valid module: input batches into model
+* Train
+  * Tensorboard for monitoring the training process, may need to wait a bit for it to show up
+  * main: do serveral time of training & validing (epoch)
+* Test
+  * Run cells with * before testing: Packages, Config, Dataloader, Model, Train Helper 
+  * Then build test dataloader and model to inference
+
+---
+
+## Resource
+Code Source: https://github.com/grimmdaniel/personality-trait-prediction
+
+Competition: [Chalearn 2017 Looking at People CVPR/IJCNN Competition](https://chalearnlap.cvc.uab.cat/challenge/23/description/)
+
+Leaderboard(Results), Evaluation Criterion: [Platform](https://competitions.codalab.org/competitions/15975#learn_the_details-evaluation)
