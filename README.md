@@ -22,12 +22,18 @@ each zip folder contains about 960 clips, clips length = 15s
     * test_set.dat (test-1~2.zip)(1845)
   * **data_v2**: 6 random frame per video, frame size 128
     * train_set.dat(train-2~6.zip)(4300)
+  * **data_v3**: 6 random frame per video, frame size 128, try not drop any videos
+    * train_set.dat(train-2~6.zip)(5034)
+    * valid_set.dat (val-1.zip)(960)
+    * valid_set_2.dat (val-2.zip)(960)
+    * test_set.dat (test-1~2.zip)(1998)
 * Train
   * train: all videos in train-1.zip (960)
   * train13: all videos in train-2~6.zip (5040)
   * train_6000: all videos in trainset (6000)
 * Valid
   * valid: all videos in val-1.zip (960)
+  * valid_2: all videos in val-2.zip (960)
   * valid_small: few vidoes from val-1.zip (960)
 * Test
   * test: all videos in testset (2000)
@@ -60,13 +66,15 @@ each zip folder contains about 960 clips, clips length = 15s
   * ***never run it if you are using .dat***
 * Dataloader*
   * pytorch Dataset for latter use
+    * dim: input channel, default = 1 
   * return 
   ```ruby
       sample = {'images': images,             # size: N frames, H, W
-                'label': float(class_label),  # 0. or 1.
+                'label': float(class_label),  # 0. or 1.  
                 'audio': audio,               # None now
                 'uid': uid,                   # video name
                 'value': org_value}           # origin annotation value 
+                                              # in big5.ipynb, 'label' is original 5 value
   ```
   * augmentation (horizon flip)
 * Load data
