@@ -33,6 +33,14 @@ each zip folder contains about 960 clips, clips length = 15s
   * test: all videos in testset (2000)
   
 ---
+## Main
+* big5.ipynb
+  * regression
+  * criterion: accuracy=1-MAE
+* big5_classification.ipynb
+  * classification
+  * criterion: accuracy, precision, recall
+---
 ## Code Cell Description
 
 * extract folder
