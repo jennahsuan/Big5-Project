@@ -16,17 +16,19 @@ each zip folder contains about 960 clips, clips length = 15s
 ### Google Drive Data Description
 
 * Preprocessed data
-  * **data_v1**: 6 random frame per video, frame size 128
+  * data_v1: 6 random frame per video, frame size 128
     * trian_set.dat (train-1.zip)(734)
     * valid_set.dat (val-1.zip)(764)
     * test_set.dat (test-1~2.zip)(1845)
-  * **data_v2**: 6 random frame per video, frame size 128
+  * data_v2: 6 random frame per video, frame size 128
     * train_set.dat(train-2~6.zip)(4300)
   * **data_v3**: 6 random frame per video, frame size 128, try not drop any videos
     * train_set.dat(train-2~6.zip)(5034)
     * valid_set.dat (val-1.zip)(960)
     * valid_set_2.dat (val-2.zip)(960)
     * test_set.dat (test-1~2.zip)(1998)
+  * **latest_data**
+    * **30_256px**: train, valid data are saved individually using video name. 30 frames (等距離的切), frame size 256.
 * Train
   * train: all videos in train-1.zip (960)
   * train13: all videos in train-2~6.zip (5040)
@@ -81,6 +83,12 @@ each zip folder contains about 960 clips, clips length = 15s
   * read .dat 
   * data structure in .dat
   ``` ruby
+  # update 11/1
+  # new structure: only record one preprocessed data
+  sample1 tuple(array[(30*256*256)]
+  
+  ##########
+  # old structure: each video and true labels in a list
   list[
     # np arrays: preprocessed images, ground truth big 5
     sample1 tuple(array[(6*128*128)], array[(5)]),
