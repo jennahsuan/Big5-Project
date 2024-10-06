@@ -1,5 +1,9 @@
 # Big5-Project
 
+## Video Demo
+✨ Impressive work by Derek Lu: https://youtu.be/4fcpOLdMnpU
+
+---
 ## Data
 ### First Impressions Data (2017) :
 
